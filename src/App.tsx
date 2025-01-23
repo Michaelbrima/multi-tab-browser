@@ -9,13 +9,15 @@ interface FormInputValues {
   link: string;
 }
 
+type Tab = {
+  title: string;
+  link: string;
+}
+
 function App() {
   const [newTab, setNewTab] = React.useState("")
   const [newLink, setNewLink] = React.useState("")
-  const [newEntry, setNewEntry] = React.useState<FormInputValues>({
-    title: '',
-    link: '',
-});
+  const [newEntry, setNewEntry] = React.useState([]);
   // function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
   //   throw new Error('Function not implemented.');
   // }
@@ -42,18 +44,49 @@ function App() {
 // setNewEntry((previousValues) => ({...newEntry, [event.target.name]: event.target.value, })
 //   )
 
-  let formInputs = {
+  var formInputs = {
     title: newTab,
     link: newLink,
   };
 
-   localStorage.setItem("formValuesSubmitted", JSON.stringify(formInputs));
-  // const storedFormData = JSON.parse(localStorage.getItem('formInputs'))
+      // setNewEntry(currentTabs => {
+    //   return [
+    //     ...currentTabs,
+    //     {id: crypto.randomUUID(), entryTitle: newEntry, completed: false },
+    //   ]
+    // })
+
+    // var arrayLocalstorage = [];
+    // arrayLocalstorage.push(formInputs);
+
+    setNewEntry([...newEntry, newTab, newLink]);
+    // var arrayLocalstorage = [];
+    var arrayLocalstorage = JSON.parse(localStorage.getItem('formInputs') || '[]');
+    // arrayLocalstorage.push(newEntry);
+    arrayLocalstorage.push(formInputs)
+  // localStorage.arrayOnWebpage.push(formInputs);
+  //  localStorage.setItem("formValuesSubmitted", JSON.stringify(formInputs)); //where array should be set up
+  // localStorage.setItem('arrayOnWebpage', JSON.stringify(arrayLocalstorage));
+  localStorage.setItem('formInputs', JSON.stringify(arrayLocalstorage));
+  // localStorage.setItem('tab', JSON.stringify(formInputs));
+   // const storedFormData = JSON.parse(localStorage.getItem('formInputs'))
   // storedFormData.push(formInputs);
   // localStorage.setItem('formInputs', JSON.stringify(storedFormData));
   alert('Form values submitted to localstorage.')
   // console.log(newEntry)
+
+  
 }
+
+// const handleChange = (e: { target: { name: any; value: any; }; }) => {
+//   const { name , value } = e.target;
+//   setNewEntry((prev) => ({ ...prev, [name]: value}))
+// }
+
+React.useEffect(() => { //update the ;oncancel;storage whenever the newEntry array changes
+  localStorage.setItem('newEntry', JSON.stringify(newEntry));
+  },
+[newEntry]);
 
   return (
     <div className="App">
