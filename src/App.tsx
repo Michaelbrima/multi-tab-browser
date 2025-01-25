@@ -70,7 +70,9 @@ var regularLists = JSON.parse(tabList);
       <li>
    <label id="tabTitle">Tab Title:</label>
    <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input>
+   <br></br>
    <iframe src={regularList.link}></iframe>
+   <br></br>
    <button className="closeButton">CLOSE</button>
  </li>
 ))}
