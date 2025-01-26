@@ -1,7 +1,7 @@
 import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Link from './components/Link';
+// import Link from './components/Link';
 import { TabItem } from './types';
 
 interface FormInputValues {
@@ -66,8 +66,8 @@ var regularLists = JSON.parse(tabList);
 
         <h1 className="header">Multi Tab Browser</h1>
         <ul className="tabList">
-               {regularLists.map((regularList: any) => (
-      <li>
+               {regularLists.map((regularList: any, index: any) => (
+      <li key={index}>
    <label id="tabTitle">Tab Title:</label>
    <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input>
    <br></br>
@@ -84,7 +84,7 @@ var regularLists = JSON.parse(tabList);
         </ul>
         
 
-        <Link href="https://reactjs.org" targetBlank>Learn React</Link> {/*targetBlank is true by default*/}
+        {/* <Link href="https://reactjs.org" targetBlank>Learn React</Link> targetBlank is true by default */}
       </header>
     </div>
   );

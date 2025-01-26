@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { StrictMode } from 'react';
 import './index.css';
 import App from './App';
-import Entry from './Entry';
 // import Tab from './Tab';
 import reportWebVitals from './reportWebVitals';
 
