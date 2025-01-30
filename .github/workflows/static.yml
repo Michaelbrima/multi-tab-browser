@@ -37,7 +37,6 @@ jobs:
         uses: actions/setup-node@v4.2.0
         with:
           node-version: 20
-      - run: npm ci
       - run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
