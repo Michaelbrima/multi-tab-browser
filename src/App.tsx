@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 // import Link from './components/Link';
 import { TabItem } from './types';
+import { BrowserRouter } from 'react-router-dom';
 
 interface FormInputValues {
   title: string;
@@ -14,7 +15,7 @@ type Tab = {
   link: string;
 }
 
-function App() {
+const App = () => {
   const [newTab, setNewTab] = React.useState("")
   const [newLink, setNewLink] = React.useState("")
   const [newEntry, setNewEntry] = React.useState([]);
@@ -51,25 +52,35 @@ var regularLists = JSON.parse(tabList);
 
   return (
 
+    <BrowserRouter>
+
+    
     <div className="App">
       <header className="App-header">
 
-        <form className='new-tab-form' onSubmit={handleSubmit}>
-          <div className='tab-form-row'>
-            <label id="entryTitle">Enter Title:</label>
-            <input type="text" value={newTab} onChange={e => setNewTab(e.target.value)} id="entryTitle" placeholder='Please enter tab title here.'></input>
-            <label id="entryLink" >Enter Link:</label>
-            <input type="text" value={newLink} onChange={e => setNewLink(e.target.value)} id="entryLink" placeholder='Please enter tab link here.'></input>
-          </div>
-        <button className='btn'>Add</button>
-        </form>
+          <form className='new-tab-form' onSubmit={handleSubmit}>
+            <h1 className="header">Multi Tab Browser</h1>
+            <p>Please enter a title and link into the entry fields below,
+              <br></br>
+            then, press the Add button to add a new tab to the page.</p>
+            <div className='tab-form-row'>
+              <label id="entryTitle">Enter Title:</label>
+              <span> </span>
+              <input type="text" value={newTab} onChange={e => setNewTab(e.target.value)} id="entryTitle" placeholder='Please enter tab title here.'></input>
+              <span> </span>
+              <label id="entryLink" >Enter Link:</label>
+              <span> </span>
+              <input type="text" value={newLink} onChange={e => setNewLink(e.target.value)} id="entryLink" placeholder='Please enter tab link here.'></input>
+            </div>
+            <button className='btn'>Add</button>
+          </form>
 
-        <h1 className="header">Multi Tab Browser</h1>
+
         <ul className="tabList">
                {regularLists.map((regularList: any, index: any) => (
       <li key={index}>
-   <label id="tabTitle">Tab Title:</label>
-   <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input>
+   <label id="tabTitle">{regularList.title}</label>
+   {/* <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input> */}
    <br></br>
    <iframe src={regularList.link}></iframe>
    <br></br>
@@ -87,6 +98,7 @@ var regularLists = JSON.parse(tabList);
         {/* <Link href="https://reactjs.org" targetBlank>Learn React</Link> targetBlank is true by default */}
       </header>
     </div>
+  </BrowserRouter>
   );
 }
 
