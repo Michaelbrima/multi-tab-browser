@@ -30,7 +30,7 @@ const App = () => {
   };
 
 
-    setNewEntry([...newEntry, newTab, newLink]);
+    // setNewEntry([...newEntry, newTab, newLink]);
 
     var arrayLocalstorage = JSON.parse(localStorage.getItem('formInputs') || '[]');
     arrayLocalstorage.push(formInputs)
@@ -48,8 +48,9 @@ React.useEffect(() => { //update the ;oncancel;storage whenever the newEntry arr
   },
 [newEntry]);
 var tabList = localStorage.getItem("formInputs");
-var regularLists = JSON.parse(tabList);
-
+var regularLists = JSON.parse(localStorage.getItem('formInputs') || '{}')
+var arrayList = [];
+arrayList.push(regularLists);
   return (
 
     <BrowserRouter>
@@ -77,16 +78,31 @@ var regularLists = JSON.parse(tabList);
 
 
         <ul className="tabList">
-               {regularLists.map((regularList: any, index: any) => (
-      <li key={index}>
-   <label id="tabTitle">{regularList.title}</label>
-   {/* <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input> */}
-   <br></br>
-   <iframe src={regularList.link}></iframe>
-   <br></br>
-   <button className="closeButton">CLOSE</button>
- </li>
-))}
+          {localStorage.formInputs}
+          {arrayList.forEach(() => {
+                          
+                          return(
+                          <li>
+                          <label id="tabTitle">{regularLists.title}</label>
+                          {/* <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input> */}
+                          <br></br>
+                          <iframe src={regularLists.link}></iframe>
+                          <br></br>
+                          <button className="closeButton">CLOSE</button>
+                        </li>
+         )} )}
+            {
+            // regularLists.map((regularList: any, index: any) => (
+              <li>
+                <label id="tabTitle">{regularLists.title}</label>
+                {/* <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input> */}
+                <br></br>
+                <iframe src={regularLists.link}></iframe>
+                <br></br>
+                <button className="closeButton">CLOSE</button>
+              </li>
+            // ))
+            }
           {/* {           
          localStorage.getItem("formInputs")
  } */}

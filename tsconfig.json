@@ -1,17 +1,36 @@
 {
+  "scripts": {
+   "start": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+   "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build"
+ },
     "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "src",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "allowJs": true,
-        "moduleResolution": "node",
-        "module": "CommonJS",
-        "lib":["es6", "dom"],
-        "target":"ES5",
-        "jsx": "react",
-        "allowSyntheticDefaultImports": true
-    },
-    "exclude": ["node_modules", "dist"],
-    "include": ["src"]
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "target": "ES5",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "src"
+  ]
 }
