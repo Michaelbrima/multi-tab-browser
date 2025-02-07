@@ -51,6 +51,17 @@ var tabList = localStorage.getItem("formInputs");
 var regularLists = JSON.parse(localStorage.getItem('formInputs') || '{}')
 var arrayList = [];
 arrayList.push(regularLists);
+const list = [];
+for(let i=0; i < regularLists.length; i++){
+  list.push(<li>
+  <label id="tabTitle">{regularLists[i].title}</label>
+  {/* <input type="text" value={regularList.title} id="tabTitle" placeholder='Please enter tab title here.'></input> */}
+  <br></br>
+  <iframe src={regularLists[i].link}></iframe>
+  <br></br>
+  <button className="closeButton">CLOSE</button>
+</li>)
+}
   return (
 
     <BrowserRouter>
@@ -106,8 +117,9 @@ arrayList.push(regularLists);
           {/* {           
          localStorage.getItem("formInputs")
  } */}
- 
- 
+ {regularLists[1].title}
+ {regularLists[1].link}
+ {list}
         </ul>
         
 
