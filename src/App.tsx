@@ -117,8 +117,8 @@ for(let i=0; i < regularLists.length; i++){
           {/* {           
          localStorage.getItem("formInputs")
  } */}
- {regularLists[1].title}
- {regularLists[1].link}
+ {/* {regularLists[1].title}
+ {regularLists[1].link} */}
  {list}
         </ul>
         
