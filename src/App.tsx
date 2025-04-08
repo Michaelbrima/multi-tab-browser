@@ -89,7 +89,7 @@ for(let i=0; i < regularLists.length; i++){
 
 
         <ul className="tabList">
-          {localStorage.formInputs}
+         {/* {localStorage.formInputs}*/} 
           {arrayList.forEach(() => {
                           
                           return(
